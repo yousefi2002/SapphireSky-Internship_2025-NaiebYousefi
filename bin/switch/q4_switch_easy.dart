@@ -1,52 +1,37 @@
 import 'dart:io';
 
-monthOfTheYear(int monthNumber){
+void monthOfTheYear(int monthNumber) {
+  // Array to store the names of the months
+  List<String> months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 
-  switch(monthNumber){
-    case 1:
-      print('January with 31 days.');
-      break;
-    case 2:
-      print('February with 28 days.');
-    case 3:
-      print('March with 31 days.');
-      break;
-    case 4:
-      print('April with 30 days.');
-      break;
-    case 5:
-      print('May with 31 days.');
-      break;
-    case 6:
-      print('June with 30 days.');
-      break;
-    case 7:
-      print('July with 31 days.');
-      break;
-    case 8:
-      print('August with 31 days.');
-      break;
-    case 9:
-      print('September with 30 days.');
-      break;
-    case 10:
-      print('October with 31 days.');
-      break;
-    case 11:
-      print('November with 30 days.');
-      break;
-    case 12:
-      print('December with 31 days.');
-      break;
-    default:
-      print('You are not from the earth.');
-      break;
+  if (monthNumber >= 1 && monthNumber <= 12) {
+    String monthName = months[monthNumber - 1]; // Get the month name from the array
+
+    // Use a switch statement to determine the number of days
+    switch (monthNumber) {
+      case 2: // February
+        print('$monthName with 28 days.');
+        break;
+      case 4: // April
+      case 6: // June
+      case 9: // September
+      case 11: // November
+        print('$monthName with 30 days.');
+        break;
+      default: // All other months have 31 days
+        print('$monthName with 31 days.');
+        break;
+    }
+  } else {
+    print('You are not from the earth.');
   }
 }
 
-void main(){
-  stdout.write('Enter the number to get the day: ');
-  int monthNumber = int.tryParse(stdin.readLineSync() ?? '')!;
-  String result = monthOfTheYear(monthNumber) ?? '';
-  print(result);
+void main() {
+  stdout.write('Enter the number to get the month: ');
+  int monthNumber = int.tryParse(stdin.readLineSync() ?? '') ?? 0;
+  monthOfTheYear(monthNumber);
 }
