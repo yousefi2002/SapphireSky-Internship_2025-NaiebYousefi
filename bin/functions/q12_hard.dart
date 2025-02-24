@@ -5,7 +5,8 @@ binarySearch(List<int> arr, int target){
   while(start <= end){
     int middle = (start + end) ~/2;
     if(arr[middle] == target){
-      return true;
+      print('Your target number [$target] found on ${middle}th index.');
+      return  '✅';
     }
     else if(arr[middle] > target){
       end = middle - 1;
@@ -13,14 +14,14 @@ binarySearch(List<int> arr, int target){
     else if(arr[middle] < target){
       start = middle + 1;
     }
-    return false;
   }
-
+  print('Your target number [$target] does not found');
+  return '❌';
 }
 
 void main(){
   List<int> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-   final result = binarySearch(numbers, 11);
+   final result = binarySearch(numbers, 78);
    print(result);
 }
