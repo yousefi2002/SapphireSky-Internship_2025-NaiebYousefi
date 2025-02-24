@@ -24,7 +24,6 @@ void main() {
   int rows = 20;
   List<List<int>> triangle = [];
 
-  // Generate Pascal's triangle
   for (int i = 0; i < rows; i++) {
     List<int> row = List.filled(i + 1, 1);
 
@@ -35,20 +34,19 @@ void main() {
     triangle.add(row);
   }
 
-  // Find the maximum number in the triangle
-  int maxNumber = triangle[rows - 1][(rows - 1) ~/ 2]; // Middle element of the last row
-  int maxLength = maxNumber.toString().length; // Length of the maximum number
+  int maxNumber = triangle[rows - 1][(rows - 1) ~/ 2];
+  int maxLength = maxNumber.toString().length;
 
-  // Print the triangle with symmetric spacing
   for (int i = 0; i < rows; i++) {
-    String spaces = ' ' * (rows - i - 1); // Leading spaces for centering
+    String spaces = '  ' * (rows - i +1);
     String rowString = '';
 
     for (int j = 0; j <= i; j++) {
       int number = triangle[i][j];
       int numberLength = number.toString().length;
-      int padding = maxLength - numberLength; // Calculate padding for symmetry
-      rowString += ' ' * padding + number.toString() + ' ';
+      int padding = maxLength - numberLength;
+      rowString += '${' ' * padding}$number ';
+
     }
 
     print(spaces + rowString);
