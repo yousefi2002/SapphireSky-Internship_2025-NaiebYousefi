@@ -1,4 +1,5 @@
-void pascalTriangle(int rows) {
+void main() {
+  int rows = 7;
   List<List<int>> triangle = [];
 
   for (int i = 0; i < rows; i++) {
@@ -11,12 +12,20 @@ void pascalTriangle(int rows) {
     triangle.add(row);
   }
 
-  for (int i = 0; i < rows; i++) {
-    String spaces = ' ' * (rows - i);
-    print(spaces + triangle[i].join(' '));
-  }
-}
+  int maxNumber = triangle[rows - 1][(rows - 1) ~/ 2];
+  int maxLength = maxNumber.toString().length;
 
-void main() {
-  pascalTriangle(9);
+  for (int i = 0; i < rows; i++) {
+    String spaces = ' ' * (rows - i - 1);
+    String rowString = '';
+
+    for (int j = 0; j <= i; j++) {
+      int number = triangle[i][j];
+      int numberLength = number.toString().length;
+      int padding = maxLength - numberLength;
+      rowString += '${' ' * padding}$number ';
+    }
+
+    print(spaces + rowString);
+  }
 }
