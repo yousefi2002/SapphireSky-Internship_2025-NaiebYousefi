@@ -19,7 +19,6 @@
 //   }
 // }
 
-
 void main() {
   int rows = 20;
   List<List<int>> triangle = [];
@@ -38,7 +37,7 @@ void main() {
   int maxLength = maxNumber.toString().length;
 
   for (int i = 0; i < rows; i++) {
-    String spaces = '  ' * (rows - i +1);
+    String spaces = '  ' * (rows - i + 1);
     String rowString = '';
 
     for (int j = 0; j <= i; j++) {
@@ -46,7 +45,6 @@ void main() {
       int numberLength = number.toString().length;
       int padding = maxLength - numberLength;
       rowString += '${' ' * padding}$number ';
-
     }
 
     print(spaces + rowString);
