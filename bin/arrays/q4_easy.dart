@@ -1,7 +1,7 @@
 //Write a function to count the occurrences of a specific element in an array.
 
 
-searchInArray(List<int> array,int target) {
+frequencyOfNumbers(List<int> array,int target) {
   int num = 0;
   List <int> indies = [];
   for (int i = 0; i < array.length; i++) {
@@ -16,6 +16,6 @@ searchInArray(List<int> array,int target) {
 void main() {
   List<int> numbers = [0, 1, 9, 4, 9, 6, 7, 9, 3, 2, 10];
   int target = 9;
-  String result = searchInArray(numbers, target);
+  String result = frequencyOfNumbers(numbers, target);
   print(' $result');
 }
