@@ -78,7 +78,9 @@ void main(){
 // Composition: A class contains an instance of another class instead of inheriting from it, forming a "has-a" relationship.
 
 
-//  --------------------------  Debugging  -----------------------------
+//  --------------------------  Debugging  --------------------------------------------------------------
+
+
 //1. What are the different types of errors in Dart?
 // Dart has three main types of errors:
 //
