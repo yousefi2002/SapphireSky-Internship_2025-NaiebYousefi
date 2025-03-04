@@ -10,7 +10,6 @@ countVowelInString(String str){
   }
   return vowelCount;
 }
-
 void main(){
   String str = 'hi man. you are good.';
 
