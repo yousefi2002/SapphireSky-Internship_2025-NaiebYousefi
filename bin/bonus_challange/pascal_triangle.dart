@@ -1,26 +1,6 @@
-// void main(){
-//   int rows = 6;
-//   List<List<int>> triangle = [];
-//
-//   for(int i = 0; i < rows; i++){
-//     List<int> row = List.filled(i + 1, 1);
-//
-//     for (int j = 1; j < i; j++) {
-//       row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
-//     }
-//
-//     triangle.add(row);
-//   }
-//
-//   for (int i = 0; i < rows; i++) {
-//     String spaces = ' ' * (rows - i-1);
-//     String result = spaces + triangle[i].join(' ');
-//     print(result);
-//   }
-// }
 
 void main() {
-  int rows = 20;
+  int rows = 10;
   List<List<int>> triangle = [];
 
   for (int i = 0; i < rows; i++) {
