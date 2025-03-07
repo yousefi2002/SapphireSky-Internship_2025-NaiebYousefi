@@ -3,8 +3,4 @@ class Node{
   Node? next;
 
   Node(this.data);
-
-   void displayNode(){
-    print('$data “->”');
-  }
 }
