@@ -1,21 +1,26 @@
-// Implement a function that rotates an array k times to the right.
+void rotateAnArray(List<int> array, int k) {
+  k = k % array.length; // Handle cases where k > array length
 
-rotateAnArray(List<int> array, int k){
-  int temp = 0;
-  for(int i = 0; i < k; i++){
-    for(int j = array.length - 1; j > 0; j--){
-      temp = array[j];
-      array[j] = array[j-1];
-      array[j-1] = temp;
+  void reverse(List<int> arr, int start, int end) {
+    while (start < end) {
+      int temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
     }
   }
-  return array;
+
+  reverse(array, 0, array.length - 1);
+  reverse(array, 0, k - 1);
+  reverse(array, k, array.length - 1);
 }
 
 void main() {
-  List<int> array = [7, 2, 3, 5, 7, 11];
-  int rotationNumber = 2;
+  List<int> arr = [1, 2, 3, 4, 5, 6, 7];
 
-  List<int> result = rotateAnArray(array, rotationNumber);
-  print(result);
+  int k = 10;
+
+  rotateAnArray(arr, k);
+  print(arr);
 }
