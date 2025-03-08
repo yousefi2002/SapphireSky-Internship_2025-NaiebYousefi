@@ -1,22 +1,30 @@
 // How do you merge two sorted arrays into one sorted array?
 
 searchInArray(List<int> sortedArray1, List<int> sortedArray2) {
+  List<int> merged = [];
+  int i = 0, j = 0;
 
-  int temp = sortedArray1[0];
-  for(int arr in sortedArray2){
-    sortedArray1.add(arr);
-  }
+  while(i < sortedArray1.length && j < sortedArray2.length){
 
-  for (int i = 0; i < sortedArray1.length; i++) {
-    for (int j = 0; j < sortedArray1.length-1; j++) {
-      if(sortedArray1[j] > sortedArray1[j+1] ){
-       temp = sortedArray1[j];
-       sortedArray1[j] = sortedArray1[j+1];
-       sortedArray1[j+1] = temp;
-      }
+    if(sortedArray1[i] < sortedArray2[j]){
+      merged.add(sortedArray1[i]);
+      i++;
+    }else{
+      merged.add(sortedArray2[j]);
+      j++;
     }
   }
-  return sortedArray1;
+
+  while (i < sortedArray1.length) {
+    merged.add(sortedArray1[i]);
+    i++;
+  }
+
+  while (j < sortedArray2.length) {
+    merged.add(sortedArray2[j]);
+    j++;
+  }
+  return merged;
 }
 
 void main() {
