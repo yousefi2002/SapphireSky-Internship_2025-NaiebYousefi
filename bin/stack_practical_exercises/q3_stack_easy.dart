@@ -12,6 +12,18 @@ class Node {
 class StackWithLinkedList {
   Node? top;
 
+  void push(int data) {
+    Node newNode = Node(data);
+    newNode.next = top;
+    top = newNode;
+  }
+
+  int? pop() {
+    Node? temp = top;
+    top = top?.next;
+    return temp?.data;
+  }
+
   int? peek(){
     return top?.data;
   }
