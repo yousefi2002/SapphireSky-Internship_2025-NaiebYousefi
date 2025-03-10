@@ -1,3 +1,5 @@
+// Implement a function to find the minimum element in a stack in constant time.
+
 import 'q3_stack_easy.dart';
 
 StackWithLinkedList mainStack = StackWithLinkedList();
