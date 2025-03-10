@@ -23,9 +23,15 @@ class StackWithLinkedList {
     top = top?.next;
     return temp?.data;
   }
+  bool isEmpty() {
+    return top == null;
+  }
 
-  int? peek(){
-    return top?.data;
+  int peek() {
+    if (top == null) {
+      throw Exception("Stack is empty");
+    }
+    return top!.data;
   }
 
   void displayStack() {

@@ -20,6 +20,13 @@ class StackLinkedList {
     top = top?.next;
     return temp?.data;
   }
+
+  display(Node2? top){
+    while (top != null){
+      print('${top.data} ->');
+    }
+    print('null');
+  }
 }
 
 bool balanceParentheses(String word) {
