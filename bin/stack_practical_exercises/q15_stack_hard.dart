@@ -24,11 +24,11 @@ String infixToPostfix(String infix) {
     if (RegExp(r'[A-Za-z0-9]').hasMatch(ch)) {
       postfix += ch;
     }
-    // If `(`, push to stack
+
     else if (ch == '(') {
       stack.push(ch);
     }
-    // If `)`, pop and append until `(` is found
+
     else if (ch == ')') {
       while (stack.top != null && stack.top?.data != '(') {
         postfix += stack.pop() ?? '';
