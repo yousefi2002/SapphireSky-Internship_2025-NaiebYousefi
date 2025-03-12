@@ -1,7 +1,6 @@
 // Implement an LRU (Least Recently Used) cache using a stack.
-import 'dart:io';
-import 'q3_stack_easy.dart';
 
+import 'q3_stack_easy.dart';
 
 class CacheLRU {
   int cacheSize = 3;
