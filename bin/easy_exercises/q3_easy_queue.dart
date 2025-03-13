@@ -23,13 +23,19 @@ class QueueLinkedList {
     }
   }
 
-  dynamic dequeue() {
-    if( front == null) return -1;
+  int? dequeue() {
+    if (front == null) {
+      print("Queue is empty");
+      return null;
+    }
 
-    dynamic removedData = front;
+    int value = front!.data;
     front = front!.next;
 
-    return removedData;
+    if (front == null) {
+      rear = null;
+    }
+    return value;
   }
 
   dynamic peek() {
@@ -67,8 +73,7 @@ void main() {
   print("Queue elements:");
   queue.display();
 
-  final removed = queue.dequeue();
-  print("\nDequeued element: ${removed.data}");
+  print("\nDequeued element: ${queue.dequeue()}");
 
   print("\nQueue after dequeue:");
   queue.display();
