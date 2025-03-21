@@ -1,52 +1,44 @@
-// How do you sort an array of strings based on their lengths?
+// Write a function to sort an array using Radix Sort.
 
-void quickSortForString(List<String> array, int low, int high) {
-  if (low < high) {
-    int pivotIndex = hoarePartition(array, low, high);
-    quickSortForString(array, low, pivotIndex);
-    quickSortForString(array, pivotIndex + 1, high);
+import 'dart:math';
+
+void radixSort(List<int> array) {
+  int maxNumber = array.reduce((a, b) => a > b ? a : b);
+  int maxDigits = maxNumber.toString().length;
+
+  for (int i = 0; i < maxDigits; i++) {
+    array.setAll(0, countingSort(array, i));
   }
 }
 
-int hoarePartition(List<String> array, int low, int high) {
-  int pivot = medianOfThree(array, low, high);
-  int left = low - 1;
-  int right = high + 1;
+List<int> countingSort(List<int> array, int digitPlace) {
+  int n = array.length;
+  List<int> output = List.filled(n, 0);
+  List<int> count = List.filled(10, 0);
 
-  while (true) {
-    do {
-      left++;
-    } while (array[left].length < pivot);
-
-    do {
-      right--;
-    } while (array[right].length > pivot);
-
-    if (left >= right) return right;
-
-    String temp = array[left];
-    array[left] = array[right];
-    array[right] = temp;
+  for (int num in array) {
+    int digit = (num ~/ pow(10, digitPlace)) % 10;
+    count[digit]++;
   }
-}
 
-int medianOfThree(List<String> array, int low, int high) {
-  int mid = (low + high) ~/ 2;
-
-  if ((array[low].length - array[mid].length) * (array[high].length - array[low].length) >= 0) {
-    return array[low].length;
-  } else if ((array[mid].length - array[low].length) * (array[high].length - array[mid].length) >= 0) {
-    return array[mid].length;
-  } else {
-    return array[high].length;
+  for (int i = 1; i < 10; i++) {
+    count[i] += count[i - 1];
   }
+
+  for (int i = n - 1; i >= 0; i--) {
+    int digit = (array[i] ~/ pow(10, digitPlace)) % 10;
+    output[count[digit] - 1] = array[i];
+    count[digit]--;
+  }
+
+  return output;
 }
 
 void main() {
-  List<String> array = ['Ali', 'Ahmad','Mohamad Ali Zafar', 'Matin', 'Farshad', 'Mahmood', 'A'];
-  print("Original array: $array");
-  final result = quickSortForString(array, 0, array.length - 1);
-  print("Sorted array: $array");
-}
+  List<int> array = [170, 45, 75, 90, 802, 24, 2, 66];
 
+  print("Before sorting: $array");
+  radixSort(array);
+  print("After sorting: $array");
+}
 
