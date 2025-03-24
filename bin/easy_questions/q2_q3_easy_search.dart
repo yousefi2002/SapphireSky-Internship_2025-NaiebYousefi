@@ -6,7 +6,7 @@
      return false;
    }
 
-  int middle = (high + low) ~/ 2;
+  int middle = low + (high - low) ~/ 2;
 
   if (array[middle] == value) {
     print("The target number <${array[middle]}> found in index $middle");
@@ -20,7 +20,7 @@
 
 void main() {
   List<int> array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  final result = binarySearch(array, 0, array.length-1, 44);
+  final result = binarySearch(array, 0, array.length-1, 4);
   print(result);
 }
 
