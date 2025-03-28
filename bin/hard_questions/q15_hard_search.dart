@@ -4,7 +4,7 @@ import 'dart:math';
 
 double findMedianSortedArrays(List<int> array1, List<int> array2) {
   if (array1.length > array2.length) {
-    return findMedianSortedArrays(array2, array1); // Ensure array1 is the smaller array
+    return findMedianSortedArrays(array2, array1);
   }
 
   int x = array1.length, y = array2.length;
@@ -14,17 +14,17 @@ double findMedianSortedArrays(List<int> array1, List<int> array2) {
     int partitionX = (low + high) ~/ 2;
     int partitionY = ((x + y + 1) ~/ 2) - partitionX;
 
-    int maxLeftX = (partitionX == 0) ? -2^31 : array1[partitionX - 1];
-    int minRightX = (partitionX == x) ? 2^31 - 1 : array1[partitionX];
+    double maxLeftX = (partitionX == 0) ? double.negativeInfinity : array1[partitionX - 1].toDouble();
+    double minRightX = (partitionX == x) ? double.infinity : array1[partitionX].toDouble();
 
-    int maxLeftY = (partitionY == 0) ? -2^31 : array2[partitionY - 1];
-    int minRightY = (partitionY == y) ? 2^31 - 1 : array2[partitionY];
+    double maxLeftY = (partitionY == 0) ? double.negativeInfinity : array2[partitionY - 1].toDouble();
+    double minRightY = (partitionY == y) ? double.infinity : array2[partitionY].toDouble();
 
     if (maxLeftX <= minRightY && maxLeftY <= minRightX) {
       if ((x + y) % 2 == 0) {
         return (max(maxLeftX, maxLeftY) + min(minRightX, minRightY)) / 2;
       } else {
-        return max(maxLeftX, maxLeftY).toDouble();
+        return max(maxLeftX, maxLeftY);
       }
     } else if (maxLeftX > minRightY) {
       high = partitionX - 1;
@@ -39,5 +39,5 @@ double findMedianSortedArrays(List<int> array1, List<int> array2) {
 void main() {
   List<int> array1 = [1, 3, 8, 9];
   List<int> array2 = [7, 9, 10, 11];
-  print(findMedianSortedArrays(array1, array2)); // Output: 8.0
+  print(findMedianSortedArrays(array1, array2));
 }
